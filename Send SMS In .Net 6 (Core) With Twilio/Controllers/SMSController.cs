@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Send_SMS_In_.Net_6__Core__With_Twilio.Dtos;
 using Send_SMS_In_.Net_6__Core__With_Twilio.Services;
+using SendSMSWithTwilio.Services;
 
 namespace Send_SMS_In_.Net_6__Core__With_Twilio.Controllers
 {
@@ -21,7 +22,7 @@ namespace Send_SMS_In_.Net_6__Core__With_Twilio.Controllers
             [HttpPost("send")]
             public IActionResult Send(SendSMSDto dto)
             {
-                var result = _smsService.Send(dto.MobileNumber, dto.Body);
+            var result = _smsService.Send(dto.MobileNumber, dto.Body);
 
                 if (!string.IsNullOrEmpty(result.ErrorMessage))
                     return BadRequest(result.ErrorMessage);
