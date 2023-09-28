@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Send_SMS_In_.Net_6__Core__With_Twilio.Helpers;
+using Send_SMS_In_.Net_6__Core__With_Twilio.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<TwilioSettings>(builder.Configuration.GetSection("Twilio"));
+builder.Services.AddTransient<ISMSService, SMSService>();
 
 var app = builder.Build(); 
 
